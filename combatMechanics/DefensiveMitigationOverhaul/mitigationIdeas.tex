@@ -44,7 +44,7 @@ Initial Ideas and Concepts}
     \subsection{The underlying premise} 
         People rarely miss hitting things that aren't moving. This is one of my great pet-peeves about D20 systems that use an attack roll and something like "AC" that is some single defensive stat. It is difficult to determine if an attack hits, misses entirely, or hits but deals no damage because it is soaked into armor ("natural" or crafted). Often low rolls are interpreted as a straight miss, even in situations where the target is unable to dodge (paralyzed, tight quarters, etc). This is a byproduct of the natural viewpoint promoted by the "roll attack" - the action is on the attacker, and thus their success is almost always determined by their ability, rather than considering that whether an attack succeeds - or how it fails - often has more to do with the nature of the defender.
         
-        Thus the underlying premise of this combat system is that we should focus on the defender, rather than attacker, as the impetus for success or failure. In this system, attacks that can make contact, are assumed to make contact, unless the defender successfully avoids the attack. The nature of ``avoid" can depend here, as it can be avoided in the sense that the attack itself is avoided (e.g. dodged entirely), or the contact can be avoided in the sense that something interposes itself between the object and the defender - e.g. armor can ``soak" the contact, preventing the effect. This is discussed in greater detail in the \hyperref[sec:dodgeVsSoak]{Dodge vs Soak section below}.
+        Thus the underlying premise of this combat system is that we should focus on the defender, rather than attacker, as the impetus for success or failure. In this system, attacks that can make contact, are assumed to make contact, unless the defender successfully avoids the attack. The nature of ``avoid" can depend here, as it can be avoided in the sense that the attack itself is avoided (e.g. dodged entirely), or the contact can be avoided in the sense that something interposes itself between the object and the defender - e.g. armor can ``soak" the contact, preventing the effect. This is discussed in greater detail in the \hyperref[sec:baseMechanics]{Dodge vs Soak section below}.
         
     \subsection{TLDR}
         This is a mechanical system designed to shift combat to be focused on the defender rather than attacker. It will differentiate between dodge, and damage mitigation components, and allows for greater RP flexibility along with better/more-reasonable mechanical outcomes in practice.
@@ -53,7 +53,101 @@ Initial Ideas and Concepts}
     
     
 
-\section{Dodge vs Damage Mitigation}\label{sec:dodgeVsSoak}
+\section{Base Mechanics: Damage vs Dodge vs Damage Mitigation}\label{sec:baseMechanics}
+    
+    \subsection{Role-play Interpretation (Motivation)}
+        The goal of this system is to capture the fundamental difference between the stylistic choice of dodging attacks versus absorbing attacks/damage, mechanically. This allows for player choices to be dodgy (e.g. a dodge tank, evasive caster, dex fighter, a rogue, etc) versus soaking up damage without truly getting hurt (e.g. juggernaut, barbarian, tin-can tank, etc).
+        
+        The intent is that, to avoid getting significantly hurt in direct combat, you should have the ability to either dodge damage or mitigate damage, and despite your choice, you should have (at least in principle) the ability to be roughly equivalent - that is, a dodge tank and a damage absorption tank should have roughly the same level of "tankiness".
+        
+        The problem with most systems that attempt this in my experience is that they either try to merge the two systems entirely (becoming a single number that represents everything) in which case the meaning is lost, but much more importantly the actual number gets incredibly difficult to impossible to control in practice. For example, a peasant in platemail has significantly better ability to avoid being hurt than a high level fighter using all the dex increasing items he can get - yielding a truly supernatural level of dexterity. This seems absurd, since a peasant has little to no combat experience and anyone with combat experience would just close in and knock them over and then stab them through the joints of the armor, whereas a legendary fighter with near teleportation levels of speed should be impossible to hit without magical assistance... but this is mechanically lost in a system like D\&D as a result of merging all of this into a single "AC" that fails to account for so many factors, and can't really determine a useful balance between the two styles of defense (dodge versus absorption/mitigation)\footnote{There are, of course, exceptions here and there are deeper mechanics that can be taken - like feats and special attacks to knock over the peasant, etc... but the point is that such a situation shouldn't really \emph{need} advanced abilities/feats. It's a farmer in a tin can.}
+        
+        So, in an effort to address this, we start by assuming that damage is (more or less) a given, and then use a dodge and physical mitigation system to mitigate the damage to determine how much damage is actually done to the player. At its core, most of these values are intended to be static\footnote{There are mechanics intended to address the variability and effort gained through things like class features, concentration, experience, and magic. This is covered in the relevant followup section}, so a standard swing of a weapon and a standard dodge or standard armor hit, all have a set value attached to it. This leads to significantly faster/streamlined combat as the number of rolls can be greatly reduced. That being said, if the game had no ``luck" or variability, it would obviously be quite boring - but this is where classes, races, items, magic, etc come into play. 
+        
+        The idea here is to reduce the ``default" exchange of weapon swing vs dodge/armor to be as basic and straight forward as possible, and then let the nature of the characters and/or monsters allow for the variability - rather than assume all actions, no matter how mundane or well practiced, have innate variability. This is especially noticeable in D20 systems like D\&D where the classic d20 roll for attack leads to a variability with uniform distribution with a spread of 20 points, which is offset by attacks that tend toward having a bonus of somewhere between 3 and 10 in most cases. When one stops to think about this, it seems rather absurd to think that ``luck" plays more of a roll in the result of an attack than decades of training and stacks of magical effects/items/buffs. And worse, the only way to ``fix" this in this kind of system, is to increase the bonus to the point to make that 20 point spread less impactful - leading to the necessity of bloated numbers for AC and/or to-hit bonuses that get so large that, unless you specialized and min/max, you either have nearly 100\% chance, or 0\% chance to succeed at any given action, which falls back into the same near-certainty of outcome that we want to avoid in the first place.
+        
+        So, with the goal in mind, let's address each mechanic separately, then we can discuss them together to address their interaction.
+        
+    \subsection{Mechanics: Damage}
+        As mentioned above, the starting idea here is to normalize damage to some fixed default value and assume it does that kind of damage to any defender - at least as a starting point. To capture the idea of ``proficiency", we assume that someone proficient with a weapon, can hit (and inflict some base amount of damage on) the target they are aiming for - assuming that the target doesn't dodge and has no armor. 
+        
+        Thus, each source of damage (e.g. individual weapons, spells, ammo, etc) should have a damage number attached to it, which is the damage done to a vulnerable (unarmored) target incapable of defending itself\footnote{As a side comment, this helps solve some of the issues with ``coup-de-grace" type attacks, allowing one to make sense of when such an attack should trigger - e.g. ``if you do full base damage, you have managed to hit them perfectly, and it counts as a special hit" etc. We will discuss some of this in the \hyperref[sec:SpecialAttacks]{Special Abilities/Attacks} section.}. This number can be increased, and variability of this number can be introduced via class features, special attacks, magic items, etc. Nonetheless, some of these things have intended impact as well, which I will outline further below.
+        
+        \subsubsection{Weapon types}
+            An obvious initial reaction should be ``ok, so what is the point of different weapons - do they all do the same damage, but your choice is flavor text? It seems crazy to have a dagger and great sword do the same base damage - after all rogues get special abilities to make that possible, it can't be inherent in the weapon right?" Indeed, having all weapons do the same base damage would be pretty indefensible from a role-playing standpoint, even if it makes mechanics a little more balanced. Likewise, huge variability in the base damage should be concerning as well, as that would seem to make everyone use whatever the highest base damage weapon they can for their class - punishing those that don't severely.
+            
+            To be clear, this has always been a problem in most d20 systems, as different weapons have always had different damage dice attached - leading to a ``statistically best" option, but at least in the d20 systems, the largest damage weapons came with added variability - thus also making them less reliable in damage numbers. Although this helped the mechanical balance, it also leads to great frustration when the fighter lands their fifth hit of the fight with his greatsword, only to do 3 damage for the 4th time because of (yet another) bad damage roll. 
+            
+            This system takes a different approach. First, weapons themselves should have a somewhat minor variation of base damage, the idea here being that, wielded by the same person with perfectly average stats down the line (e.g. our tin can peasant) different weapons tend to be (roughly) equally effective. Instead, the reason we tend to imagine a greatsword cutting huge swaths through several enemies at once, and a dagger going through the eye of a villain for an instant kill, has more to do with the stats and abilities of the person wielding the weapon. We don't imagine a scrawny wizard cutting apart four goblins with a single swing of a claymore, rather we imagine a heavily muscled barbarian cleaving enemies apart all around them. Likewise, we don't think of that same muscled barbarian carefully placing the dagger in an enemies eye - we usually envision a stealthy rogue carefully planning and then executing their foe with a well timed and well placed attack, ambushing from the shadows.
+            
+            To capture this then, we don't have large variation in base damage of weapons, rather weapons allow for various amounts of damage increases from stats or abilities depending on the weapon type. For example, the amount of strength you can leverage with a dagger is much less than with a claymore, and thus a dagger would have a severe cap on how much bonus damage due to strength gets added to an attack, whereas the claymore allows for a significantly higher amount of strength damage transferred. Likewise, the claymore is not a precision tool like a dagger, and so the dagger allows for a much higher dexterity damage cap, compared to the claymore.
+            
+            Thus, each weapon should have (at least) the following stats attached\footnote{At some point I'll build a weapon table to give a list of potential weapons and their stats under this system to substitute into most d20 style systems}
+            \begin{description}
+                \item[\textbf{Base damage:} ] This the amount of damage the weapon does without any other consideration and may vary between weapons but shouldn't have significant variance. When determining base damage, imagine an untrained peasant with exactly average numbers in every stat attacking a practice dummy.
+                \item[\textbf{Strength Bonus Cap:} ] This is the amount of damage increase that a weapon can impart, based purely on how much harder it can be used to hit something. Think of our exactly average peasant swinging the weapon, versus his twin whose the same in every way but is the strongest person in town, versus their traveling uncle that is exactly the same but is the strongest man in the region performing for the circus. Wielding a dagger they probably don't do a whole lot different in damage, wielding a shortsword maybe there is a little less damage done by our peasant, but the other two are probably about the same. Using the longsword maybe we cap out the brother and the uncle is doing a little more damage than the brother. Using a greatsword, the uncle is doing significantly more damage than brother, let alone our original peasant.
+                \item[\textbf{Dexterity Bonus Cap:} ] As described in the strength bonus cap above, but now we are considering the ability of different weapons to facilitate precision attacks rather than brute devastation.
+            \end{description}
+            
+            Recall that, in our new system, there is no ``to-hit" bonus from attributes as such a thing isn't really considered anymore - rather the increase in damage serves to capture the idea of overcoming the mitigating effect of dodging and physical mitigation (see below). This means that we no longer have the massive disparity of the dex fighter that can hit anything, but can't do nearly as much damage as the strength fighter, who would do lots of damage if they could manage to hit something. This helps breaks the stereotype of strength vs dex fighting, while allowing for dodge/absorb mechanics and solving a number of inflation issues on stat/roll values.
+            
+            
+        \subsubsection{General class features}
+            The advantage of this system is it lets class features build on top of a relatively stable system of dodge/absorb mechanics, rather than trying to use them to inflate/bloat numbers to overcome inherent mechanical issues within the game mechanics. Thus class features that impact damage (offensively or defensively) should be used to impact the relevant style of combat.
+            
+            For example, in standard D\&D improving a rogue's damage is done generically through something like ``sneak attack" just dealing more dice of damage. There is nothing shy of DM-driven interpretation about how it makes sense to do bonus damage as a rogue, and there is no middle ground between standard (and relatively weak) attacks, and overwhelming ``sneak attack" damage. This forces players to either come up with a mechanical workaround to allow rogues to chain ``sneak attack" (at which point - how sneaky is that really?) or watch their effectiveness slowly drop compared to standard fighters.
+            
+            Instead, this system allows rogues to get class features that increase their dexterity bonus cap - signifying their trained skill/ability with precision fighting over the more standard proficiency that a fighter might get, even in precision weapons. In this way, rogues will always be superior to fighters when it comes to dealing precision (dexterity-based) damage in combat, even while a dex based fighter is still viable compared to the rogue due to other class features a dexterity based fighter can get - e.g. \hyperref[subsec:shields]{bonuses with shields} and/or area control.
+            
+            The point here is that, by dividing the mechanics into a clear and clean dexterity (precision) versus strength (brute force) mechanics, it allows for class features to cleanly impact one versus the other, even within the context of how the class should interact with that stat. Rogues can specialize as assassins and raise their damage capacity with precision weapons, or they could specialize into an evasive scout, getting bonuses to \hyperref[subsec:dodge]{dodge mitigation} rather than damage. Similarly, fighters could specialize in dexterity and get bonuses in evasive tanking as well, or movement/area control, rather but even their precision damage bonuses can be balanced in comparison to the assassin path to allow the fighter to be better defensively but worse offensively compared to assassin paths as one might expect\footnote{Clearly, as this is mostly a guide to building and balancing the mechanics themselves, one can implement whatever class features they want - including making assassin fighters or dodge tank rogues. I would argue such things may detract from the clear ``class role" the original classes are suppose to represent, but perhaps this blending of ``classic class roles" is desirable in your gaming group - in which case the mechanics outlined here allow you to build class features/abilities to capture the blending of such traditional class roles... so go nuts! Just be aware that creating class features/feats/specialization for a class can easily shift their role into another classes territory, for better and worse.}.
+        
+        
+        \subsubsection{Magic items}
+            One the one hand, magic items are a staple of fantasy TTRPGs. On the other hand, more and more they feel more generic - i.e. the classic ``+1 sword" feels like it isn't really significant when rolls are already getting +11 to hit and +7 to damage, that ``+1" from the magic feels insignificant, unless it has a secondary effect\footnote{Or you have a DM that likes to throw monsters at you that are immune to non-magic weapons - which is mean but effective.}.
+            
+            In this system, magic items have two very different potential areas of impact. The most common impact - akin to the ``generic +1 sword" impact, is to significantly improve the strength \emph{and} dexterity bonus cap. The intent is that magic items - being magic - aid in facilitating precision. For example, the magic can allow for more precise strikes with naturally non-precise weapons - e.g. a greatsword that is naturally lighter, allowing for more agile use. Alternatively, for the already naturally precise weapons, the magic helps the attacker leverage more of their strength to the hit, for example a magic dagger that builds force while being swung, and releases it once the strike lands - allowing more of the attackers strength to be released within the weakpoint once struck. 
+            
+            The second, and arguably more interesting, of the impact of magic items within this system, is the ability to build magic weapons or armor that fundamentally changes its impact to the other damage/mitigation system. For example, a dagger that is enchanted so it creates a huge blade when it swings to effectively become a greatsword - the magic converting any dexterity stat bonus into strength stat bonus for the attacker, and using the base stats of a greatsword (and thus allowing attack made with the magic dagger to be buffed or augmented with other magic or items as if they were a strength class, despite all other aspects of their class still being potentially dexterity based). Similarly, a set of full plate armor might become ethereal and weightless, and its defense is translated into the ability of the defender to become partially intangible - translating the defense granted by the full plate armor to be interpreted as a dodge bonus rather than physical mitigation. This allows for interesting magical effects that have large impact in usability and style/role-play value, without being mechanically unbalanced or overpowering.
+            
+            \hyperref[sec:MagicItems]{Both of these effects are discussed in more detail in the section on magic items below.}
+        
+        \subsubsection{Damage: Summary}
+            Weapons should have small variable base damage, but additionally the weapon type will determine how much of a given stat bonus (dex for precision attacking, str for forceful attcking) can be applied to attacks. That damage is then augmented by class features/bonuses, and magic items, but more interestingly the type of damage being done (precision vs brute force) can be changed by class features or magic item properties, allowing for high impact effects from a role-playing and style standpoint, which being mechanically balanced. 
+            
+            The significant reduction of variability on damage, along with shift to defensive focus, should heavily mitigate the number-bloat that generally occurs in d20 systems to try and make progressively larger AC overcome by different types of attack bonuses - leading to more numerically stable and understandable value exchanges.
+        
+    \subsection{Mechanics: Dodge}\label{subsec:dodge}
+        
+        
+    \subsection{Mechanics: Mitigation}\label{subsec:physMitigation}
+        
+        
+    \subsection{Mechanics: Attack Vs Dodge and Mitigation Together}\label{subsec:atkVsMultiDefenses}
+        
+        
+        
+\section{Effects of Armor and Shields}\label{sec:armorAndShields}
+    
+    \subsection{Role-play Interpretation (Motivation)}
+        
+    \subsection{Mechanics: Armor}\label{subsec:armor}
+        
+        
+    \subsection{Mechanics: Shield}\label{subsec:shields}
+        
+        
+
+        
+\section{Involving Martial "Special Abilities/Attacks"}\label{sec:SpecialAttacks}
+    
+    \subsection{Role-play Interpretation (Motivation)}
+        
+    \subsection{Mechanics Ideas}
+        
+        
+
+
+\section{Damage and Mitigation from Magic}
     
     \subsection{Role-play Interpretation (Motivation)}
         
@@ -61,11 +155,14 @@ Initial Ideas and Concepts}
         
         
         
-\section{Effects of Armor and Shields}
+\section{Roll/Impact of Magic Items}\label{sec:MagicItems}
     
     \subsection{Role-play Interpretation (Motivation)}
         
-    \subsection{Mechanics Ideas}
+    \subsection{Mechanics: Elevated Stat Cap}\label{subsec:magicItemStatCap}
+        
+    \subsection{Mechanics: Change Stat Role}\label{subsec:magicItemStatChange}
+        
         
         
         
@@ -76,31 +173,6 @@ Initial Ideas and Concepts}
     \subsection{Mechanics Ideas}
         
     
-        
-\section{Damage and Mitigation from Magic}
-    
-    \subsection{Role-play Interpretation (Motivation)}
-        
-    \subsection{Mechanics Ideas}
-        
-        
-        
-\section{Roll/Impact of Magic Items}
-    
-    \subsection{Role-play Interpretation (Motivation)}
-        
-    \subsection{Mechanics Ideas}
-        
-        
-        
-\section{Involving Martial "Special Abilities/Attacks"}
-    
-    \subsection{Role-play Interpretation (Motivation)}
-        
-    \subsection{Mechanics Ideas}
-        
-        
-        
         
 
 
